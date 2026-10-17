@@ -12,6 +12,7 @@ venv/
 *.sqlite3
 *.docx
 *.txt
+!requirements.txt
 *.log
 uploads/*
 outputs/*
