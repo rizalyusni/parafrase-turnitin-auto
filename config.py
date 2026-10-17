@@ -25,8 +25,8 @@ else:
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-# Server configuration
-PORT = int(os.getenv("PORT", 8000))
+# Server configuration (Railway standard default is 8080)
+PORT = int(os.getenv("PORT", 8080))
 HOST = os.getenv("HOST", "0.0.0.0")
 
 # Security and app secrets

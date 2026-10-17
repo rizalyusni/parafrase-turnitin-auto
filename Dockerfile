@@ -25,8 +25,9 @@ COPY . .
 # Ensure storage directories exist
 RUN mkdir -p uploads outputs
 
-# Expose port (Railway dynamically injects $PORT)
-EXPOSE 8000
+# Expose port (Railway standard default is 8080)
+ENV PORT=8080
+EXPOSE 8080
 
 # Start server using python main.py
 CMD ["python", "main.py"]
