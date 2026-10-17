@@ -45,15 +45,22 @@ app.add_middleware(
 # Startup: initialize database tables and seed initial vocabulary & terms
 @app.on_event("startup")
 def on_startup():
-    init_db()
-    db = SessionLocal()
     try:
-        seed_database(db)
-    finally:
-        db.close()
-    print("[Server] Database initialized with seed padanan and locked terms.")
+        init_db()
+        db = SessionLocal()
+        try:
+            seed_database(db)
+        finally:
+            db.close()
+        print("[Server] Database initialized with seed padanan and locked terms.")
+    except Exception as e:
+        print(f"[Server Warning] Database startup notice: {e}")
 
-# ----------------- UI ROUTE -----------------
+# ----------------- HEALTH & UI ROUTE -----------------
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "service": "turnitin-paraphrase-automator"}
+
 @app.get("/", response_class=HTMLResponse)
 def index_page():
     html_file = Path(__file__).resolve().parent / "templates" / "index.html"
@@ -339,4 +346,6 @@ def delete_locked_term(term_id: int, db: Session = Depends(get_db)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host=HOST, port=PORT, reload=True)
+    server_port = int(os.environ.get("PORT", 8000))
+    print(f"[Server] Launching Turnitin Paraphrase Automator on 0.0.0.0:{server_port}")
+    uvicorn.run("main:app", host="0.0.0.0", port=server_port, reload=False)

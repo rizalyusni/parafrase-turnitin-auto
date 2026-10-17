@@ -4,10 +4,8 @@
 # =====================================================================
 FROM python:3.11-slim
 
-# Prevent Python from writing .pyc and enable unbuffered logging
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
 
 WORKDIR /app
 
@@ -27,8 +25,8 @@ COPY . .
 # Ensure storage directories exist
 RUN mkdir -p uploads outputs
 
-# Expose port (Railway injects $PORT environment variable)
+# Expose port (Railway dynamically injects $PORT)
 EXPOSE 8000
 
-# Start Uvicorn ASGI server with dynamic port binding
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Start server using python main.py
+CMD ["python", "main.py"]
