@@ -357,7 +357,7 @@
                 <div class="space-y-4 text-xs">
                     <div class="p-4 rounded-xl bg-slate-900 text-slate-200 font-mono space-y-2">
                         <span class="text-emerald-400 font-bold"># Langkah 1: Push ke GitHub yang sudah dibuat</span><br>
-                        git remote add origin https://github.com/afrizalyusni/parafarase-turnitin-otomatis.git<br>
+                        git remote set-url origin https://github.com/rizalyusni/parafrase-turnitin-auto.git<br>
                         git branch -M main<br>
                         git push -u origin main
                     </div>
@@ -366,7 +366,7 @@
                         <span class="font-bold text-slate-800">Langkah 2: Sambungkan ke Railway</span>
                         <ol class="list-decimal list-inside space-y-1 text-slate-600">
                             <li>Buka <strong>railway.app</strong> lalu klik <em>New Project</em>.</li>
-                            <li>Pilih <em>Deploy from GitHub repo</em> dan pilih repository <strong>afrizalyusni/parafarase-turnitin-otomatis</strong>.</li>
+                            <li>Pilih <em>Deploy from GitHub repo</em> dan pilih repository <strong>rizalyusni/parafrase-turnitin-auto</strong>.</li>
                             <li>Tambahkan Service <strong>PostgreSQL</strong> di Railway. Railway akan otomatis mengatur variabel <code class="bg-slate-200 px-1 py-0.5 rounded">DATABASE_URL</code>.</li>
                             <li>Pada tab <em>Variables</em>, tambahkan (opsional untuk AI): <code class="bg-slate-200 px-1 py-0.5 rounded">GEMINI_API_KEY</code>.</li>
                             <li>Railway akan otomatis mem-build Dockerfile dan meluncurkan aplikasi dengan port yang sesuai!</li>

@@ -41,8 +41,8 @@ Dibangun khusus untuk memenuhi standar:
 
 ### 2. Instalasi Dependensi
 ```bash
-git clone https://github.com/afrizalyusni/parafarase-turnitin-otomatis.git
-cd parafarase-turnitin-otomatis
+git clone https://github.com/rizalyusni/parafrase-turnitin-auto.git
+cd parafrase-turnitin-auto
 
 python -m venv venv
 # Windows:
@@ -82,7 +82,7 @@ Aplikasi telah disiapkan lengkap dengan `Dockerfile` dan `railway.json` untuk Ra
 2. **Buka Dashboard Railway**:
    - Masuk ke [railway.app](https://railway.app).
    - Klik **New Project** -> **Deploy from GitHub repo**.
-   - Pilih repository: `afrizalyusni/parafarase-turnitin-otomatis`.
+   - Pilih repository: `rizalyusni/parafrase-turnitin-auto`.
 3. **Tambahkan Database PostgreSQL di Railway**:
    - Pada proyek Railway Anda, klik **+ New** -> **Database** -> **Add PostgreSQL**.
    - Railway akan otomatis menginjeksi variabel `DATABASE_URL` ke service aplikasi Anda.
