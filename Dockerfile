@@ -1,33 +1,17 @@
-# =====================================================================
-# DOCKERFILE FOR RAILWAY DEPLOYMENT
-# Turnitin Paraphrase Automator
-# =====================================================================
 FROM python:3.11-slim
-
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install system dependencies needed for lxml and PostgreSQL
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install python dependencies
+# Install dependencies using precompiled wheels
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application source code
+# Copy project files
 COPY . .
 
 # Ensure storage directories exist
 RUN mkdir -p uploads outputs
 
-# Expose port (Railway standard default is 8080)
-ENV PORT=8080
 EXPOSE 8080
 
-# Start server using python main.py
 CMD ["python", "main.py"]
